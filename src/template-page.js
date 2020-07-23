@@ -1,33 +1,72 @@
-const generateEmployeesList = employeesArr => {
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
+
+const filterRole = (employee, role) => {
+  if(employee.getRole() == role) {
+    return employee;
+  }
+}
+
+const engineersList = engineersArr => {
     return `
     <section>
       <div>
-        ${projectsArr
-            // TODO: change the filter to filter by role titles
-          .filter(({ feature }) => !feature)
+        ${engineersArr
             // TODO: change map values to proper role values
-          .map(({ name, description, languages, link }) => {
+          .map((engineer) => {
             return `
-            <div>
-              <h3>${name}</h3>
-              <h5>
-                Built With:
-                ${languages.join(', ')}
-              </h5>
-              <p>${description}</p>
-              <a href="${link}"></a>
+            <div class="card text-center" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">${engineer.getName()}</h5>
+                <div class="card-text">
+                  <p>${engineer.getId()}</p>
+                  <a href="${engineer.getEmail()}">${engineer.getEmail()}</a>
+                  <a href="https://github.com/${engineer.getGithub()}'>${engineer.github}</a>
+                </div>
+              </div>
             </div>
           `;
           })
-          .join('')}
+          .join('')
+        }
         </div>
       </section>
     `;
-  };
+};
 
-module.exports = templateData => {
+const internList = internArr => {
+  return `
+  <section>
+    <div>
+      ${internArr
+          // TODO: change map values to proper role values
+        .map(({ name, id, email, school }) => {
+          return `
+          <div class="card text-center" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">${intern.getName()}</h5>
+                <div class="card-text">
+                  <p>${intern.getId()}</p>
+                  <a href="${intern.getEmail()}">${intern.getEmail()}</a>
+                  <p>${intern.getSchool()}</p>
+                </div>
+              </div>
+            </div>
+        `;
+        })
+        .join('')
+      }
+      </div>
+    </section>
+  `;
+};
+
+module.exports = employeesArr => {
     // destructure page data by section
-    const { manager, ...employees } = templateData;
+    const { manager, ...employees } = employeesArr;
+    const engineers = employees.filter(filterRole(employee, 'Engineer'));
+    const interns = employees.filter(filterRole(employee, 'Intern'));
   
     return `
     <!DOCTYPE html>
@@ -38,19 +77,27 @@ module.exports = templateData => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Team Portfolio</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="style.css">
     </head>
   
     <body>
       <main>
-        <div>
-        ${manager}
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">${manager.getName()}</h5>
+            <div class="card-text">
+              <p>${manager.getId()}</p>
+              <a href="${manager.getEmail()}">${manager.getEmail()}</a>
+              <p>${manager.getOfficeNumber()}</[]>
+            </div>
+          </div>
         </div>
-        ${generateEmployeesList(employees)}
+        <div>
+          ${engineersList(engineers)}
+          ${internList(interns)}
+        </div>
       </main>
-      <footer class="container text-center py-3">
-        <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${header.name}</h3>
-      </footer>
     </body>
     </html>
     `;
