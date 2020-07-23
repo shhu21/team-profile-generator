@@ -16,7 +16,7 @@ const checkRole = employee => {
         return addIntern();
     }
     else {
-        return;
+        return generatePage(employees);
     }
 }
 
@@ -53,6 +53,16 @@ inquirer
     })
     .then(addTeam)
     // .then(generatePage(employees))
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+      })
+    // .then(writeFileResponse => {
+    //     console.log(writeFileResponse);
+    //     return copyFile();
+    //   })
+    //   .then(copyFileResponse => {
+    //     console.log(copyFileResponse);
+    //   })
     .catch(error => {
         console.log(error);
     });

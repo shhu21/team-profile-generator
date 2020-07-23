@@ -11,18 +11,20 @@ const filterRole = (employee, role) => {
 const engineersList = engineersArr => {
     return `
     <section>
-      <div>
+      <div class='row'>
         ${engineersArr
             // TODO: change map values to proper role values
-          .map((engineer) => {
+          .map(engineer => {
             return `
-            <div class="card text-center" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">${engineer.getName()}</h5>
-                <div class="card-text">
-                  <p>${engineer.getId()}</p>
-                  <a href="${engineer.getEmail()}">${engineer.getEmail()}</a>
-                  <a href="https://github.com/${engineer.getGithub()}'>${engineer.github}</a>
+            <div class='col-3'>
+              <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">${engineer.getName()}</h5>
+                  <div class="card-text">
+                    <p>${engineer.getId()}</p>
+                    <a href="${engineer.getEmail()}">${engineer.getEmail()}</a>
+                    <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -38,11 +40,12 @@ const engineersList = engineersArr => {
 const internList = internArr => {
   return `
   <section>
-    <div>
+    <div class='row'>
       ${internArr
           // TODO: change map values to proper role values
-        .map(({ name, id, email, school }) => {
+        .map(intern => {
           return `
+          <div class='col-3'>
           <div class="card text-center" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">${intern.getName()}</h5>
@@ -53,6 +56,7 @@ const internList = internArr => {
                 </div>
               </div>
             </div>
+          </div>
         `;
         })
         .join('')
@@ -64,9 +68,10 @@ const internList = internArr => {
 
 module.exports = employeesArr => {
     // destructure page data by section
-    const { manager, ...employees } = employeesArr;
-    const engineers = employees.filter(filterRole(employee, 'Engineer'));
-    const interns = employees.filter(filterRole(employee, 'Intern'));
+    const [ manager, ...employees ] = employeesArr;
+
+    const engineers = employees.filter(employee => filterRole(employee, 'Engineer'));
+    const interns = employees.filter(employee => filterRole(employee, 'Intern'));
   
     return `
     <!DOCTYPE html>
@@ -83,20 +88,21 @@ module.exports = employeesArr => {
   
     <body>
       <main>
-        <div class="card text-center" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">${manager.getName()}</h5>
-            <div class="card-text">
-              <p>${manager.getId()}</p>
-              <a href="${manager.getEmail()}">${manager.getEmail()}</a>
-              <p>${manager.getOfficeNumber()}</[]>
+      <div class='container'>
+        <div class='row'>
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${manager.getName()}</h5>
+              <div class="card-text">
+                <p>${manager.getId()}</p>
+                <a href="${manager.getEmail()}">${manager.getEmail()}</a>
+                <p>${manager.getOfficeNumber()}</p>
+              </div>
             </div>
           </div>
         </div>
-        <div>
-          ${engineersList(engineers)}
-          ${internList(interns)}
-        </div>
+        ${engineersList(engineers)}
+        ${internList(interns)}
       </main>
     </body>
     </html>
