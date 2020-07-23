@@ -1,4 +1,4 @@
-var inquirer = require('inquirer');
+// Question Prompts
 
 const rolePrompt = [
     {

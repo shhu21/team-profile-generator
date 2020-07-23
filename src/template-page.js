@@ -2,74 +2,77 @@ const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
+// filters by role
 const filterRole = (employee, role) => {
   if(employee.getRole() == role) {
     return employee;
   }
 }
 
+// engineer cards
 const engineersList = engineersArr => {
     return `
           <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
             ${engineersArr
               .map(engineer => {
                 return `
-                <div class="col mb-4">
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-header engineer">
-                      <span class="oi oi-code"></span>
-                      <p>Engineer</p>
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title">${engineer.getName()}</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">ID: ${engineer.getId()}</li>
-                      <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target='_blank'> ${engineer.getEmail()}</a></li>
-                      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target='_blank'> ${engineer.getGithub()}</a></li>
-                    </ul>
-                  </div>
+            <div class="col mb-4">
+              <div class="card" style="width: 18rem;">
+                <div class="card-header engineer">
+                  <span class="oi oi-code"></span>
+                  <p>Engineer</p>
                 </div>
+                <div class="card-body">
+                  <h5 class="card-title">${engineer.getName()}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID: ${engineer.getId()}</li>
+                  <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target='_blank'> ${engineer.getEmail()}</a></li>
+                  <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target='_blank'> ${engineer.getGithub()}</a></li>
+                </ul>
+              </div>
+            </div>
               `;
               })
-              .join('')
+              .join(' ')
             }
-            </div>
+          </div>
     `;
 };
 
+// intern cards
 const internList = internArr => {
   return `
-        <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-          ${internArr
-            .map(intern => {
-              return `
-              <div class="col mb-4">
-                <div class="card" style="width: 18rem;">
-                  <div class="card-header intern">
-                    <span class="oi oi-person"></span>
-                    <p>Intern</p>
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">${intern.getName()}</h5>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${intern.getId()}</li>
-                    <li class="list-group-item">School: ${intern.getSchool()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}" target='_blank'> ${intern.getEmail()}</a></li>
-                  </ul>
+          <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+            ${internArr
+              .map(intern => {
+                return `
+            <div class="col mb-4">
+              <div class="card" style="width: 18rem;">
+                <div class="card-header intern">
+                  <span class="oi oi-person"></span>
+                  <p>Intern</p>
                 </div>
+                <div class="card-body">
+                  <h5 class="card-title">${intern.getName()}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID: ${intern.getId()}</li>
+                  <li class="list-group-item">School: ${intern.getSchool()}</li>
+                  <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}" target='_blank'> ${intern.getEmail()}</a></li>
+                </ul>
               </div>
-            `;
-            })
-            .join('')
-          }
+            </div>
+              `;
+              })
+              .join(' ')
+            }
           </div>
   `;
 };
 
+// html page
 module.exports = employeesArr => {
-    // destructure page data by section
     const [ manager, ...employees ] = employeesArr;
 
     const engineers = employees.filter(employee => filterRole(employee, 'Engineer'));
@@ -120,6 +123,4 @@ module.exports = employeesArr => {
     </body>
     </html>
     `;
-  };
-
-  // TODO: apply class styles
+};
