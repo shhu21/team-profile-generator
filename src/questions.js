@@ -41,10 +41,10 @@ const managerQ = [
         name: 'email',
         message: 'Enter the email of the team manager: ',
         validate: input => {
-            if (input) {
+            if (input.includes('@') && input.includes('.')) {
                 return true;
             } else {
-                console.log('\nPlease enter the email of the team manager.');
+                console.log('\nPlease enter a valid email.');
                 return false;
             }
         }
@@ -96,10 +96,10 @@ const engineerQ = [
         name: 'email',
         message: 'Enter the email of the engineer: ',
         validate: input => {
-            if (input) {
+            if (input.includes('@') && input.includes('.')) {
                 return true;
             } else {
-                console.log('\nPlease enter the email of the engineer.');
+                console.log('\nPlease enter a valid email.');
                 return false;
             }
         }
@@ -151,10 +151,10 @@ const internQ = [
         name: 'email',
         message: 'Enter the email of the intern: ',
         validate: input => {
-            if (input) {
+            if (input.includes('@') && input.includes('.')) {
                 return true;
             } else {
-                console.log('\nPlease enter the email of the intern.');
+                console.log('\nPlease enter a valid email.');
                 return false;
             }
         }

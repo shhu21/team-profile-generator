@@ -6,8 +6,10 @@ const Intern = require("./lib/Intern");
 const { rolePrompt, managerQ, engineerQ, internQ } = require("./src/questions.js");
 const { writeFile, copyFile } = require('./src/generate-site.js');
 
+// array of employees
 let employees = [];
 
+// check the chosen role
 const checkRole = employee => {
     if(employee.role == 'Engineer') {
         return addEngineer();
@@ -20,14 +22,14 @@ const checkRole = employee => {
     }
 }
 
-// choose role questions
+// choose role
 const addTeam = () => {
     return inquirer
         .prompt(rolePrompt)
         .then(employee => checkRole(employee))
 }
 
-// questions for each role
+// engineer questions
 const addEngineer = () => {
     return inquirer
         .prompt(engineerQ)
@@ -37,6 +39,7 @@ const addEngineer = () => {
         })
 }
 
+// intern questions
 const addIntern = () => {
     return inquirer
         .prompt(internQ)
@@ -52,17 +55,16 @@ inquirer
         employees.push(new Manager(employee.name, employee.id, employee.email, employee.office));
     })
     .then(addTeam)
-    // .then(generatePage(employees))
     .then(pageHTML => {
         return writeFile(pageHTML);
       })
-    // .then(writeFileResponse => {
-    //     console.log(writeFileResponse);
-    //     return copyFile();
-    //   })
-    //   .then(copyFileResponse => {
-    //     console.log(copyFileResponse);
-    //   })
+    .then(writeFileResponse => {
+        // console.log(writeFileResponse);
+        return copyFile();
+    })
+    .then(copyFileResponse => {
+    console.log("Success!");
+    })
     .catch(error => {
         console.log(error);
     });

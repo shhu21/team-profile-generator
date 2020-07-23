@@ -10,68 +10,61 @@ const filterRole = (employee, role) => {
 
 const engineersList = engineersArr => {
     return `
-    <section>
-      <div class='row'>
-        ${engineersArr
-          .map(engineer => {
-            return `
-            <div class='col-lg col-med col-sm-12'>
-              <div class="card text-center" style="width: 18rem;">
-                <div class="card-header">
-                  Engineer
+          <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+            ${engineersArr
+              .map(engineer => {
+                return `
+                <div class="col mb-4">
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-header engineer">
+                      <span class="oi oi-code"></span>
+                      <p>Engineer</p>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">${engineer.getName()}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">ID: ${engineer.getId()}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target='_blank'> ${engineer.getEmail()}</a></li>
+                      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target='_blank'> ${engineer.getGithub()}</a></li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title">${engineer.getName()}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID: ${engineer.getId()}</li>
-                </ul>
-                <div class="card-body">
-                <a href="https://github.com/${engineer.getGithub()}" class="card-link">GitHub: ${engineer.getGithub()}</a>
-                  <a href="${engineer.getEmail()}" class="card-link">Email: ${engineer.getEmail()}</a>
-                </div>
-              </div>
+              `;
+              })
+              .join('')
+            }
             </div>
-          `;
-          })
-          .join('')
-        }
-        </div>
-      </section>
     `;
 };
 
 const internList = internArr => {
   return `
-  <section>
-    <div class='row'>
-      ${internArr
-          // TODO: change map values to proper role values
-        .map(intern => {
-          return `
-          <div class='col-lg col-med col-sm-12'>
-              <div class="card text-center" style="width: 18rem;">
-                <div class="card-header">
-                  Intern
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">${intern.getName()}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID: ${intern.getId()}</li>
-                  <li class="list-group-item">School: ${intern.getSchool()}</li>
-                </ul>
-                <div class="card-body">
-                  <a href="${intern.getEmail()}" class="card-link">Email: ${intern.getEmail()}</a>
+        <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+          ${internArr
+            .map(intern => {
+              return `
+              <div class="col mb-4">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header intern">
+                    <span class="oi oi-person"></span>
+                    <p>Intern</p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">${intern.getName()}</h5>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${intern.getId()}</li>
+                    <li class="list-group-item">School: ${intern.getSchool()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}" target='_blank'> ${intern.getEmail()}</a></li>
+                  </ul>
                 </div>
               </div>
-            </div>
-        `;
-        })
-        .join('')
-      }
-      </div>
-    </section>
+            `;
+            })
+            .join('')
+          }
+          </div>
   `;
 };
 
@@ -92,35 +85,41 @@ module.exports = employeesArr => {
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Team Portfolio</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
       <link rel="stylesheet" href="style.css">
     </head>
   
     <body>
+      <header>
+        My Team
+      </header>
       <main>
-      <div class='container'>
-        <div class='row'>
-          <div class='col'>
-            <div class="card text-center" style="width: 18rem;">
-              <div class="card-header">
-                Manager
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">${manager.getName()}</h5>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${manager.getId()}</li>
-                <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
-              </ul>
-              <div class="card-body">
-                <a href="${manager.getEmail()}" class="card-link">Email: ${manager.getEmail()}</a>
+        <div class='container'>
+          <div class='row'>
+            <div class="col-lg col-md col-sm-12">
+              <div class="card" style="width: 18rem;">
+                <div class="card-header manager">
+                  <span class="oi oi-clipboard"></span>
+                  <p>Manager</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">${manager.getName()}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID: ${manager.getId()}</li>
+                  <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
+                  <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}" target='_blank'> ${manager.getEmail()}</a></li>
+                </ul>
               </div>
             </div>
           </div>
+          ${engineersList(engineers)}
+          ${internList(interns)}
         </div>
-        ${engineersList(engineers)}
-        ${internList(interns)}
       </main>
     </body>
     </html>
     `;
   };
+
+  // TODO: apply class styles
