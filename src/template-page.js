@@ -13,18 +13,22 @@ const engineersList = engineersArr => {
     <section>
       <div class='row'>
         ${engineersArr
-            // TODO: change map values to proper role values
           .map(engineer => {
             return `
-            <div class='col-3'>
+            <div class='col-lg col-med col-sm-12'>
               <div class="card text-center" style="width: 18rem;">
+                <div class="card-header">
+                  Engineer
+                </div>
                 <div class="card-body">
                   <h5 class="card-title">${engineer.getName()}</h5>
-                  <div class="card-text">
-                    <p>${engineer.getId()}</p>
-                    <a href="${engineer.getEmail()}">${engineer.getEmail()}</a>
-                    <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a>
-                  </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID: ${engineer.getId()}</li>
+                </ul>
+                <div class="card-body">
+                <a href="https://github.com/${engineer.getGithub()}" class="card-link">GitHub: ${engineer.getGithub()}</a>
+                  <a href="${engineer.getEmail()}" class="card-link">Email: ${engineer.getEmail()}</a>
                 </div>
               </div>
             </div>
@@ -45,18 +49,23 @@ const internList = internArr => {
           // TODO: change map values to proper role values
         .map(intern => {
           return `
-          <div class='col-3'>
-          <div class="card text-center" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">${intern.getName()}</h5>
-                <div class="card-text">
-                  <p>${intern.getId()}</p>
-                  <a href="${intern.getEmail()}">${intern.getEmail()}</a>
-                  <p>${intern.getSchool()}</p>
+          <div class='col-lg col-med col-sm-12'>
+              <div class="card text-center" style="width: 18rem;">
+                <div class="card-header">
+                  Intern
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">${intern.getName()}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID: ${intern.getId()}</li>
+                  <li class="list-group-item">School: ${intern.getSchool()}</li>
+                </ul>
+                <div class="card-body">
+                  <a href="${intern.getEmail()}" class="card-link">Email: ${intern.getEmail()}</a>
                 </div>
               </div>
             </div>
-          </div>
         `;
         })
         .join('')
@@ -90,13 +99,20 @@ module.exports = employeesArr => {
       <main>
       <div class='container'>
         <div class='row'>
-          <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">${manager.getName()}</h5>
-              <div class="card-text">
-                <p>${manager.getId()}</p>
-                <a href="${manager.getEmail()}">${manager.getEmail()}</a>
-                <p>${manager.getOfficeNumber()}</p>
+          <div class='col'>
+            <div class="card text-center" style="width: 18rem;">
+              <div class="card-header">
+                Manager
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">${manager.getName()}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${manager.getId()}</li>
+                <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
+              </ul>
+              <div class="card-body">
+                <a href="${manager.getEmail()}" class="card-link">Email: ${manager.getEmail()}</a>
               </div>
             </div>
           </div>
@@ -108,6 +124,3 @@ module.exports = employeesArr => {
     </html>
     `;
   };
-
-//   TODO: maybe change the generateEmployeesList to a specific role functions so each one is in their own row
-    //   probably would change the destructing variables and check if some roles even exist

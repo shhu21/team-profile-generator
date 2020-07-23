@@ -32,7 +32,7 @@ const addEngineer = () => {
     return inquirer
         .prompt(engineerQ)
         .then(employee => {
-            employees.push(new Engineer(employee.name, employee.id, employee.email, employee.school));
+            employees.push(new Engineer(employee.name, employee.id, employee.email, employee.github));
             return addTeam();
         })
 }
