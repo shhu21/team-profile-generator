@@ -57,13 +57,18 @@ inquirer
     .then(addTeam)
     .then(pageHTML => {
         return writeFile(pageHTML);
-      })
-    .then(writeFileResponse => {
-        // console.log(writeFileResponse);
-        return copyFile();
+    })
+    .then((writeFileResponse) => {
+        if(writeFileResponse.ok) {
+            return copyFile();
+        }
+        console.log(writeFileResponse);
     })
     .then(copyFileResponse => {
-    console.log("Success!");
+        if(copyFileResponse.ok) {
+            return console.log('Success! File was created.');
+        }
+        console.log(copyFileResponse);
     })
     .catch(error => {
         console.log(error);

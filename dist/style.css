@@ -4,7 +4,7 @@ header {
     font-weight: bold;
     font-size: 3rem;
     padding: 2rem;
-    background-color: #009688;
+    background-color: #596171;
 }
 
 main {
@@ -12,11 +12,11 @@ main {
 }
 
 .manager {
-    background-color: #4db6ac;
+    background-color: #f8db98;
 }
 
 .engineer {
-    background-color: #80cbc4;
+    background-color: #CCC6AB;
 }
 
 .intern {
@@ -25,10 +25,6 @@ main {
 
 .row {
     margin: 1rem;
-}
-
-.col {
-    margin: auto;
 }
 
 .card {
@@ -58,4 +54,13 @@ a:hover {
 
 span {
     padding: 0.5rem 0.5rem;
+}
+
+h2 {
+    color: #ffab40;
+    border-bottom: 0.1rem solid;
+    border-width: 50%;
+    text-align: center;
+    margin: 2rem;
+    padding: 1rem;
 }

@@ -2,6 +2,14 @@ const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
+// check if the arr is empty
+const ifEmpty = (arr) => {
+  if(arr == undefined || arr.length == 0) {
+    return false;
+  }
+  return true;
+}
+
 // filters by role
 const filterRole = (employee, role) => {
   if(employee.getRole() == role) {
@@ -11,7 +19,12 @@ const filterRole = (employee, role) => {
 
 // engineer cards
 const engineersList = engineersArr => {
+  if(!ifEmpty(engineersArr)) {
+    return '';
+  }
+
     return `
+          <h2>Engineer Team</h2>
           <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
             ${engineersArr
               .map(engineer => {
@@ -42,7 +55,12 @@ const engineersList = engineersArr => {
 
 // intern cards
 const internList = internArr => {
+  if(!ifEmpty(internArr)) {
+    return '';
+  }
+
   return `
+          <h2>Intern Team</h2>
           <div class='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
             ${internArr
               .map(intern => {
@@ -77,7 +95,7 @@ module.exports = employeesArr => {
 
     const engineers = employees.filter(employee => filterRole(employee, 'Engineer'));
     const interns = employees.filter(employee => filterRole(employee, 'Intern'));
-  
+
     return `
     <!DOCTYPE html>
     <html lang="en">
