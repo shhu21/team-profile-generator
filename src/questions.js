@@ -41,7 +41,8 @@ const managerQ = [
         name: 'email',
         message: 'Enter the email of the team manager: ',
         validate: input => {
-            if (input.includes('@') && input.includes('.')) {
+            const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (email.test(input)) {
                 return true;
             } else {
                 console.log('\nPlease enter a valid email.');
@@ -96,7 +97,8 @@ const engineerQ = [
         name: 'email',
         message: 'Enter the email of the engineer: ',
         validate: input => {
-            if (input.includes('@') && input.includes('.')) {
+            const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (email.test(input)) {
                 return true;
             } else {
                 console.log('\nPlease enter a valid email.');
@@ -151,7 +153,8 @@ const internQ = [
         name: 'email',
         message: 'Enter the email of the intern: ',
         validate: input => {
-            if (input.includes('@') && input.includes('.')) {
+            const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (email.test(input)) {
                 return true;
             } else {
                 console.log('\nPlease enter a valid email.');
