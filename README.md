@@ -13,7 +13,7 @@
 
 
 # Description
-Creates a team profile html page using user input from the command line.
+Creates a team profile html page using user input from the command line.  (Each team role is colored coded in the generated page, Mangaer - Yellow, Engineer - Beige, Intern - Teal.)
 
 # Installation
 1. Clone the repository.
@@ -21,7 +21,7 @@ Creates a team profile html page using user input from the command line.
 3. Run `node Index.js` in the command line to start the program.
 
 # User's Guide
-As mentioned in the [Installation](#installation) instructions, run `node Index.js` to start the program. The generated `index.html`, as well as the corresponding `style.css` file, can be found in the `dist` directory (`./dist/index.html`, `./dist/style.css`).  The user is first prompted to input the team manager's information (required), and then propmpted to choose to add an engineer or an intern.  If the user wishes to stop adding team members, they may select `Cancel` to exit.  View the [Demo](#demo) for a video walkthrough of the program. (The Demo only shows examples of one of each team role, but the user may enter as many engineers and/or interns as they wish.) </br>
+As mentioned in the [Installation](#installation) instructions, run `node Index.js` to start the program. The generated `index.html`, as well as the corresponding `style.css` file, can be found in the `dist` directory (`./dist/index.html`, `./dist/style.css`).  The user is first prompted to input the team manager's information (required), and then propmpted to choose to add an engineer or an intern.  If the user wishes to stop adding team members, they may select `Cancel` to exit.  View the [Demo](#demo) for a video walkthrough of the program. (The Demo only shows one example of each team role, but the user may enter as many engineers and/or interns as they wish.) </br>
 
 The following is a list of prompts for each team role:  </br>
 *Note: All prompts are required and emails are run by a validation check.*
