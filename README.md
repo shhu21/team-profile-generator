@@ -12,7 +12,7 @@
 
 
 # Description
-Creates a professional README using user input from the command line.
+Creates a team profile html page using user input from the command line.
 
 # Installation
 1. Clone the repository.
