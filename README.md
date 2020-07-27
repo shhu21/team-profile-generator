@@ -1,6 +1,7 @@
 # Team Profile Generator
 
 # Demo
+(*Note: An example page is provided in the `dist` directory with the name `index.html`*) </br>
 [Demo Video](https://drive.google.com/file/d/1wux0nQVLEylJsVU_1pI9jXsRLA40OCRK/view)
 
 # Table Of Contents
