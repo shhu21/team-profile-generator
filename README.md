@@ -13,7 +13,7 @@
 
 
 # Description
-Creates a team profile html page using user input from the command line.  (Each team role is colored coded in the generated page, Mangaer - Yellow, Engineer - Beige, Intern - Teal.)
+Creates a team profile html page using user input from the command line.  (Each team role is colored coded in the generated page, Manager - Yellow, Engineer - Beige, Intern - Teal.)
 
 # Installation
 1. Clone the repository.
